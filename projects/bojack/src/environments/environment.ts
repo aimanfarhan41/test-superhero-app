@@ -3,15 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'http://superheroapi.com/api/',
-  apiKey: '10212498471281034',
-  settings: {
-    appErrorPrefix: '[Angular Heroes Error] ',
-    appTitle: 'Angular Heroes',
-    version: '1.0.0'
-  }
+  production: false
 };
+
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can

@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">  
+   <span class="example-fill-remaining-space">Superheroes</span>
+</mat-toolbar>
+<form class="layout" ng-init="">
+   <mat-tab-group layout-margin>
+      <mat-tab label="Hero List">
+        <mat-list>
+             <mat-list-item *ngFor="let item of listOfHeroes$"> {{item.name}} </mat-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Search">
+          <mat-form-field>
+             <input #searchBox (keyup)="search(searchBox.value)" matInput placeholder="Search">
+          </mat-form-field>
+          <mat-list>
+             <mat-list-item *ngFor="let hero of heroes$ | async;"> {{hero.name}} </mat-list-item>
+          </mat-list>
+          <mat-label color="danger" *ngIf="(heroes$ | async)?.length==0">No records found!</mat-label>
+      </mat-tab>
+   </mat-tab-group>
+</form>
+
+
+
+
+
+
+
+
+

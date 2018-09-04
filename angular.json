@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/test-app",
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -56,6 +56,14 @@
             "production": {
               "browserTarget": "test-app:build:production"
             }
+          }
+        },
+      "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/test-app",
+            "main": "src/main.server.ts",
+            "tsConfig": "src/tsconfig.server.json"
           }
         },
         "extract-i18n": {
@@ -115,6 +123,258 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "bojack": {
+      "root": "projects/bojack/",
+      "sourceRoot": "projects/bojack/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bojack",
+            "index": "projects/bojack/src/index.html",
+            "main": "projects/bojack/src/main.ts",
+            "polyfills": "projects/bojack/src/polyfills.ts",
+            "tsConfig": "projects/bojack/tsconfig.app.json",
+            "assets": [
+              "projects/bojack/src/favicon.ico",
+              "projects/bojack/src/assets"
+            ],
+            "styles": [
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "projects/bojack/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bojack/src/environments/environment.ts",
+                  "with": "projects/bojack/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bojack:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bojack:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bojack:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bojack/src/test.ts",
+            "polyfills": "projects/bojack/src/polyfills.ts",
+            "tsConfig": "projects/bojack/tsconfig.spec.json",
+            "karmaConfig": "projects/bojack/karma.conf.js",
+            "styles": [
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "projects/bojack/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/bojack/src/favicon.ico",
+              "projects/bojack/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bojack/tsconfig.app.json",
+              "projects/bojack/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/bojack-server",
+            "main": "projects/bojack/src/main.server.ts",
+            "tsConfig": "projects/bojack/tsconfig.server.json"
+          }
+        }
+      }
+    },
+    "bojack-e2e": {
+      "root": "projects/bojack-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/bojack-e2e/protractor.conf.js",
+            "devServerTarget": "bojack:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bojack:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/bojack-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "peanutbutter": {
+      "root": "projects/peanutbutter/",
+      "sourceRoot": "projects/peanutbutter/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/peanutbutter",
+            "index": "projects/peanutbutter/src/index.html",
+            "main": "projects/peanutbutter/src/main.ts",
+            "polyfills": "projects/peanutbutter/src/polyfills.ts",
+            "tsConfig": "projects/peanutbutter/tsconfig.app.json",
+            "assets": [
+              "projects/peanutbutter/src/favicon.ico",
+              "projects/peanutbutter/src/assets"
+            ],
+            "styles": [
+              "projects/peanutbutter/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/peanutbutter/src/environments/environment.ts",
+                  "with": "projects/peanutbutter/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "peanutbutter:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "peanutbutter:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "peanutbutter:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/peanutbutter/src/test.ts",
+            "polyfills": "projects/peanutbutter/src/polyfills.ts",
+            "tsConfig": "projects/peanutbutter/tsconfig.spec.json",
+            "karmaConfig": "projects/peanutbutter/karma.conf.js",
+            "styles": [
+              "projects/peanutbutter/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/peanutbutter/src/favicon.ico",
+              "projects/peanutbutter/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/peanutbutter/tsconfig.app.json",
+              "projects/peanutbutter/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "peanutbutter-e2e": {
+      "root": "projects/peanutbutter-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/peanutbutter-e2e/protractor.conf.js",
+            "devServerTarget": "peanutbutter:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "peanutbutter:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/peanutbutter-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
